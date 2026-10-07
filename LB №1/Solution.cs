@@ -28,7 +28,12 @@ internal class Solution
 
     public bool isUpperCase(char x)
     {
-        return char.IsUpper(x);
+        if ((int)x > 64 && (int)x < 91)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public bool isDivisor(int a, int b)
@@ -178,17 +183,19 @@ internal class Solution
 
     public bool equalNum(int x)
     {
-        int original = x;
-        int reversed = 0;
+        int firstDigit = x % 10;
 
         while (x > 0)
         {
-            int lastDigit = x % 10;
-            reversed = reversed * 10 + lastDigit;
+            if (x % 10 != firstDigit)
+            {
+                return false;
+            }
+
             x /= 10;
         }
 
-        return original == reversed;
+        return true;
     }
 
     public void leftTriangle(int x)
